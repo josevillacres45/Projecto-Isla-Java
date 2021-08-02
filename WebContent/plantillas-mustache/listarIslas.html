@@ -1,0 +1,92 @@
+<h1>Listado de mis Islas</h1>
+{{#.}}
+<div class="album py-5 bg-light" >
+		<div class="container">
+			<div class="col-xl-12">
+      			<div class="row">
+							<div class="col-md-4 col-xl-12">
+          							<div class="card mb-4 box-shadow">
+           							 <div class="flex-xl-row d-xl-flex">
+             							 <div class="col-xl-4">
+              							  <div class="divImagen" id="{{id}}-{{numeroFotos}}" style="background-image: url('subidas/{{id}}/1.jpg');"></div>
+              							</div>
+           							 	<div class="col-xl-8">
+            								<div class="card-body">
+            							  		<p class="font-italic">Nombre:{{nombre}}</p>
+            							 		<div class="d-flex justify-content-between align-items-center">
+                										<div class="align-items-center">
+              							    				<h3 class="text-muted ml-1">Precio:{{precio}}</h3>
+              							    				<h3 class="text-muted ml-1" >Pais:{{pais}}</h3>
+              							    				<h3 class="text-muted ml-1">Telefono:{{telefono}}</h3>
+              							    		</div>
+            							  			</div>
+                                <div class="d-flex">
+                                        <a href="#" class="enlaceBorrar btn btn-primary ml-1" idp="{{id}}">Borrar Anuncio</a>
+                                        <a href="#" class="enlaceEditar btn btn-primary ml-1" idp="{{id}}">Modificar Anuncio</a>
+                                </div>
+           							 			</div>
+            								</div>
+            							</div>
+       								 </div>
+        						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{{/.}}
+<script type="text/javascript">
+  var imagenesTotales=0;
+    var mostrarNombreImagen=1;
+    var id="";
+    var encontradoMatriz=new Boolean(true);
+    var intervalo;
+    $(".divImagen").mouseover(function(e){
+      var nombreId=e.currentTarget.id;
+      var encontrado=false;
+      for (var i = 0; i < nombreId.length; i++) {
+        if(nombreId[i]=="-"){
+          encontrado=true;
+        }
+        if (encontrado && nombreId[i]!="-") {
+          imagenesTotales=nombreId[i];
+        }else if(nombreId[i]!="-"){
+          id+=nombreId[i];
+        }
+      }
+      intervalo=setInterval(moverIntervalo,4000,$(this),id);
+    });
+
+    $(".divImagen").mouseout(function(){
+      clearInterval(intervalo);
+      mostrarNombreImagen=1;
+      imagenesTotales=0;
+      encontradoMatriz=true;
+      $(this).css("background-image","url('subidas/"+id+"/1.jpg')");
+      id="";
+    });
+
+    function moverIntervalo(recibidor,id){
+      if (encontradoMatriz && imagenesTotales>mostrarNombreImagen) {
+        mostrarNombreImagen++;
+        recibidor.addClass("horizTranslate");
+        recibidor.css("background-image","url('subidas/"+id+"/"+mostrarNombreImagen+".jpg')");
+      }else{
+        if (imagenesTotales==1) {
+          mostrarNombreImagen==1;
+          recibidor.removeClass("horizTranslate");
+          recibidor.addClass('horizTranslate');
+          recibidor.css("background-image","url('subidas/"+id+"/"+mostrarNombreImagen+".jpg')");
+        }else{
+          mostrarNombreImagen--;
+          recibidor.removeClass("horizTranslate");
+          recibidor.addClass('horizTranslate');
+          recibidor.css("background-image","url('subidas/"+id+"/"+mostrarNombreImagen+".jpg')");
+        }
+        if (mostrarNombreImagen==1) {
+          encontradoMatriz=true;
+        }else{
+          encontradoMatriz=false;
+        }
+      }
+    }
+</script>

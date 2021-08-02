@@ -1,0 +1,73 @@
+
+ <div class="modal-dialog text-center">
+        <div class="col-sm-8 main-section">
+            <div class="modal-content">
+                <div class="col-12 user-img">
+                    <img src="imagenesEstaticas/isla.jpg"/>
+                </div>
+				<form id="formData" class="col-12">
+					<div class="form-group">
+						<h5 class="text-white">Nombre</h5>
+						<input type="text"  class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+						<span class="text-danger d-none">No puede dejar el nombre vacio ni agregar numeros</span>
+					 </div>
+					 <div class="form-group"><h5 class="text-white">Precio</h5>
+						<input type="number" name="precio" id="precio"  placeholder="Precio">
+						<span class="text-danger d-none">Introduzca numeros</span>
+					</div>
+					 <div class="form-group">
+					 	<h5 class="text-white">Pais</h5>
+					 	<input type="text" name="pais" id="pais"  placeholder="Pais">
+					 	<span class="text-danger d-none">Introduzca caracteres</span> 
+					 </div>
+					 <div class="form-group">
+					 	<h5 class="text-white">Telefono</h5>
+					 	<input type="number" name="telefono" id="telefono"  placeholder="Telefono">
+					 	<span class="text-danger d-none">Introduzca 9 numeros</span> 
+					 </div>
+					 <div class="form-group">
+					 	<h5 class="text-white">Email</h5>
+					 	<input type="text" name="email" id="email" placeholder="Email">
+					 	<span class="text-danger d-none">Introduzca un Email valido</span>
+					 </div>
+					 <div class="form-group">
+					 	<h5 class="text-white">Metros Cuadrados</h5>
+					 	<input type="number" name="metros_cuadrados" id="metros_cuadrados" placeholder="Metros Cuadrados">
+					 	<span class="text-danger d-none">Introduzca valores numericos</span>
+					 </div>
+					 <div class="form-group">
+					 	<h5 class="text-white">Descripcion</h5>
+					 	<input type="text" name="descripcion" id="descripcion" placeholder="Descripcion">
+					 	<span class="text-danger d-none">Introduzca una breve descripcion(15 caracteres)</span>
+					 </div>
+					 <div class="form-group">
+					 	<h5 class="text-white">Categoria</h5>
+					 	<select name="idCategoria" id="idCategoria">
+					 		<option value="0">Elige una categoria</option>
+					 		{{#.}}
+					 		<option value="{{id}}">{{nombre}}</option>
+					 		{{/.}}
+					 	</select>
+					 	<span class="text-danger d-none">Escoge una categoria</span>
+					 </div>
+					  <div class="form-group d-block w-25">
+					  	<h5 class="text-white">Portada</h5>
+					 	<input type="file" name="portada" id="portada1" placeholder="Portada">
+					 	<span class="text-danger d-none">Portada Obligatoria</span>
+					 </div>
+					  <div class="form-group d-block w-25">
+					  	<h5 class="text-white">Portada <span>*No obligatorio</span></h5>
+					 	<input type="file" name="portada2" id="portada2" placeholder="Portada" >
+					 </div>
+					  <div class="form-group d-block w-25">
+					  	<h5 class="text-white">Portada <span>*No obligatorio</span></h5>
+					 	<input type="file" name="portada3" id="portada3" placeholder="Portada" >
+					 </div>
+					 <div class="form-group">
+					 	<input type="submit" class="btn btn-primary" value="Guardar cambios de la Isla" />
+					 </div>
+				</form>	
+            </div>
+        </div>
+    </div>
+   
